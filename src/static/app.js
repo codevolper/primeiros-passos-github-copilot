@@ -27,6 +27,24 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>Disponibilidade:</strong> ${spotsLeft} vagas disponíveis</p>
         `;
 
+        // Seção de participantes
+        if (details.participants && details.participants.length > 0) {
+          const participantsSection = document.createElement("div");
+          participantsSection.className = "participants-section";
+          const title = document.createElement("h4");
+          title.textContent = "Participantes";
+          participantsSection.appendChild(title);
+          const list = document.createElement("ul");
+          list.className = "participants-list";
+          details.participants.forEach(participant => {
+            const item = document.createElement("li");
+            item.textContent = participant;
+            list.appendChild(item);
+          });
+          participantsSection.appendChild(list);
+          activityCard.appendChild(participantsSection);
+        }
+
         activitiesList.appendChild(activityCard);
 
         // Add option to select dropdown
